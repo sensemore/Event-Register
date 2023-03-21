@@ -784,38 +784,7 @@
 			
 		</div>
 		<script>
-			function init() {
-				try {
-					const formData = JSON.parse(localStorage.getItem("myForm"));
-					// get input fields. If you have some unique id associated to them, you can use document.querySelector(`#${inputId}`);
-					const inputFields = document.querySelectorAll("input");
-					for (let i = 0; i < inputFields.length; i++) {
-						const inputId = inputFields[i].getAttribute("id");
-						console.log(inputId);
-						if (inputId && formData[inputId]) {
-							inputFields[i].value = formData[inputId] || "";
-						}
-						// fallback to empty string in case it is not found in localStorage object
-					}
-				} catch (e) {
-					// handle error
-				}
-				setInterval(() => {
-					//save form data to localStorage
-					saveForm();
-				}, 3000);
-			}
-
-			function saveForm() {
-				const formData = {};
-				const inputFields = document.querySelectorAll("input");
-				for (let i = 0; i < inputFields.length; i++) {
-					const inputId = inputFields[i].getAttribute("id");
-
-					formData[inputId] = inputFields[i].value;
-				}
-				localStorage.setItem("myForm", JSON.stringify(formData));
-			}
+			
 			function send(event) {
 				event.preventDefault();
 
