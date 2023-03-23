@@ -27,7 +27,6 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
     <style>
-     
         input[type=text],
         input[type=email],
         input[type=tel] {
@@ -273,10 +272,10 @@
         }
 
         .bee-row-1 .bee-col-2 .bee-block-3 form {
-            display:flex !important;
+            display: flex !important;
             flex-direction: column;
-            margin-top:40px;
-            gap:10px;
+            margin-top: 40px;
+            gap: 10px;
             width: 100%;
         }
 
@@ -579,17 +578,19 @@
                             <div class="bee-form-row">
                                 <div class="bee-field bee-field-r0c1m2i6">
                                     <div style="display:flex;align-items: flex-start;">
-                                        <input type="checkbox" style="margin-top: 5px;"/> <label for="r0c1m2i7" style="color:#989898">I agree to provide my personal
+                                        <input type="checkbox" style="margin-top: 5px;" /> <label for="r0c1m2i7"
+                                            style="color:#989898">I agree to provide my personal
                                             details and confirm have read a agreed to <a href="/aydinlatma"
-                                                style="color:#f05f22;text-decoration: none;"><b>Sensemore Privacy Policy</b></a></label>
+                                                style="color:#f05f22;text-decoration: none;"><b>Sensemore Privacy
+                                                    Policy</b></a></label>
                                     </div>
                                 </div>
                             </div>
                             <div class="bee-form-row">
                                 <div class="bee-field bee-field-r0c1m2i8">
                                     <div class="bee-button-container">
-                                        <button id="r0c1m2i8" name="submit" type="submit"
-                                            value="Download">DOWNLOAD</button>
+                                        <button id="r0c1m2i8" name="submit" type="submit" value="Download"
+                                            onclick="">DOWNLOAD</button>
                                     </div>
                                 </div>
                             </div>
@@ -632,13 +633,25 @@
             //Access-Control-Allow-Origin
             // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             xhr.send(data);
-
+            document.location('marketing.sensemore.io/files/Sensemore Case Study - Brine Transfer Pump.pdf')
             document.getElementById("loading").style.display = "block";
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    alert(
-                        "Kaydınız başarıyla alınmıştır. Etkinlik bağlantısı mail adresinize gönderilmiştir. Teşekkür ederiz."
-                    );
+                    fetch('https://marketing.sensemore.io/files/Sensemore_Case_Study_Brine_Transfer_Pump.pdf')
+                        .then(resp => resp.blob())
+                        .then(blob => {
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.style.display = 'none';
+                            a.href = url;
+                            // the filename you want
+                            a.download = 'Sensemore Case Study - Brine Transfer Pump.pdf';
+                            document.body.appendChild(a);
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                        })
+                        .catch();
+
                 } else if (this.readyState == 4 && this.status != 200) {
                     alert("Beklenmedik hata");
                 }
