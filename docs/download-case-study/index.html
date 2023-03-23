@@ -636,7 +636,7 @@
             document.getElementById("loading").style.display = "block";
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    fetch('https://marketing.sensemore.io/files/Sensemore_Case_Study_Brine_Transfer_Pump.pdf')
+                    fetch('https://marketing.sensemore.io/download-case-study/files/Sensemore_Case_Study_Brine_Transfer_Pump.pdf')
                         .then(resp => resp.blob())
                         .then(blob => {
                             const url = window.URL.createObjectURL(blob);
