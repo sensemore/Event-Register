@@ -633,7 +633,6 @@
             //Access-Control-Allow-Origin
             // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             xhr.send(data);
-            document.location('marketing.sensemore.io/files/Sensemore Case Study - Brine Transfer Pump.pdf')
             document.getElementById("loading").style.display = "block";
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
